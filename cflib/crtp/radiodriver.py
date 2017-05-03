@@ -262,8 +262,7 @@ class RadioDriver(CRTPDriver):
         self._thread.stop()
 
         # Close the USB dongle
-        if self._radio_manager:
-            self._radio_manager.close()
+        self._radio_manager.close()
         self._radio_manager = None
 
         while not self.out_queue.empty():
@@ -389,7 +388,7 @@ class _RadioDriverThread(threading.Thread):
     Radio link receiver thread used to read data from the
     Crazyradio USB driver. """
 
-    TRIES_BEFORE_DISCON = 10
+    TRIES_BEFORE_DISCON = 1000000000000000000
 
     def __init__(self, radio_manager, inQueue, outQueue,
                  link_quality_callback, link_error_callback, link):

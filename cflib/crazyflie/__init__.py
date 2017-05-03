@@ -214,8 +214,7 @@ class Crazyflie():
         self.state = State.INITIALIZED
         self.link_uri = link_uri
         try:
-            self.link = cflib.crtp.get_link_driver(
-                link_uri, self._link_quality_cb, self._link_error_cb)
+            self.link = cflib.crtp.get_link_driver(link_uri, self._link_quality_cb, self._link_error_cb)
 
             if not self.link:
                 message = 'No driver found or malformed URI: {}' \
